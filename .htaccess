@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_URI} !^/web/
+RewriteCond %{HTTP_HOST} ^(www\.)?idylltravels\.
+RewriteRule ^(.*)$ /web/$1 [L]

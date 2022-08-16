@@ -1,0 +1,55 @@
+@import 'sassbase';
+
+.layout-container {
+	width: 90%;
+	margin: 0 auto;
+	padding-top: 20px;
+}
+
+#block-idylltravels-main-menu {
+	height: 30px;
+
+	ul {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+
+		li {
+			display: inline;
+			margin: 20px 10px;
+
+			a,
+			a:visited {
+				color: $yellow;
+				text-decoration: none;
+			}
+
+			a:hover {
+				color: $green;
+				text-decoration: underline;
+			}
+		}
+
+		li:first-child {
+			margin: 20px 10px 20px 0;
+		}
+	}
+}
+
+#block-homebannerimage,
+#block-idylltravels-content {
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+footer {
+	border-top: 1px solid $yellow;
+	padding-top: 20px;
+
+	#block-buymeacoffee {
+		max-width: 228px;
+		margin: 0 auto;
+	}
+}

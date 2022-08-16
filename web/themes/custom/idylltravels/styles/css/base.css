@@ -1,0 +1,56 @@
+@import url(https://fonts.bunny.net/css?family=overpass:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i);
+body {
+  font-family: "Overpass", sans-serif;
+  color: #FCEFF9;
+  background-color: #04080a;
+  padding: 0;
+  margin: 0;
+}
+
+.layout-container {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+#block-idylltravels-main-menu {
+  height: 30px;
+}
+#block-idylltravels-main-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#block-idylltravels-main-menu ul li {
+  display: inline;
+  margin: 20px 10px;
+}
+#block-idylltravels-main-menu ul li a,
+#block-idylltravels-main-menu ul li a:visited {
+  color: #F9C846;
+  text-decoration: none;
+}
+#block-idylltravels-main-menu ul li a:hover {
+  color: #5b8e7d;
+  text-decoration: underline;
+}
+#block-idylltravels-main-menu ul li:first-child {
+  margin: 20px 10px 20px 0;
+}
+
+#block-homebannerimage img,
+#block-idylltravels-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  border-top: 1px solid #F9C846;
+  padding-top: 20px;
+}
+footer #block-buymeacoffee {
+  max-width: 228px;
+  margin: 0 auto;
+}
+
+/*# sourceMappingURL=base.css.map */
