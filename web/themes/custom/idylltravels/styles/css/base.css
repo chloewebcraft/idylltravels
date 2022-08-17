@@ -7,6 +7,30 @@ body {
   margin: 0;
 }
 
+a,
+a:link,
+a:visited {
+  color: #F9C846;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #5b8e7d;
+  text-decoration: underline;
+}
+
+#block-buymeacoffee a,
+#block-buymeacoffee a:link,
+#block-buymeacoffee a:visited,
+#block-buymeacoffee a:hover {
+  color: #04080a;
+  text-decoration: none;
+}
+
+.bmc-btn {
+  height: 40px;
+}
+
 .layout-container {
   width: 90%;
   margin: 0 auto;

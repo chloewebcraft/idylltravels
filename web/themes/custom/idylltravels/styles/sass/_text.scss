@@ -8,3 +8,28 @@ body {
 	margin: 0;
 }
 
+a,
+a:link,
+a:visited {
+	color: $yellow;
+	text-decoration: none;
+}
+
+a:hover {
+	color: $green;
+	text-decoration: underline;
+}
+
+#block-buymeacoffee {
+	a,
+	a:link,
+	a:visited,
+	a:hover {
+		color: $black;
+		text-decoration: none;
+	}
+}
+
+.bmc-btn {
+	height: 40px;
+}

@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => '7ecd8f7835c1f8f809e027e7ce5d5d2f57ad8f6b',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -413,12 +413,12 @@
             'dev_requirement' => false,
         ),
         'drupal/recommended-project' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '7ecd8f7835c1f8f809e027e7ce5d5d2f57ad8f6b',
             'dev_requirement' => false,
         ),
         'drupal/redirect' => array(
@@ -437,6 +437,15 @@
             'install_path' => __DIR__ . '/../../web/modules/contrib/rename_admin_paths',
             'aliases' => array(),
             'reference' => '8.x-2.1',
+            'dev_requirement' => false,
+        ),
+        'drupal/superfish' => array(
+            'pretty_version' => '1.4.0',
+            'version' => '1.4.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../web/modules/contrib/superfish',
+            'aliases' => array(),
+            'reference' => '8.x-1.4',
             'dev_requirement' => false,
         ),
         'drupal/token' => array(
@@ -563,6 +572,15 @@
             'install_path' => __DIR__ . '/../masterminds/html5',
             'aliases' => array(),
             'reference' => 'f640ac1bdddff06ea333a920c95bbad8872429ab',
+            'dev_requirement' => false,
+        ),
+        'mehrpadin/superfish' => array(
+            'pretty_version' => '2.1',
+            'version' => '2.1.0.0',
+            'type' => 'drupal-library',
+            'install_path' => __DIR__ . '/../../web/libraries/superfish',
+            'aliases' => array(),
+            'reference' => '80a0a484b727e9fbe6b0ee609f80e10e5e158683',
             'dev_requirement' => false,
         ),
         'nikic/php-parser' => array(
