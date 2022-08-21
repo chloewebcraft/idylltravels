@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '7ecd8f7835c1f8f809e027e7ce5d5d2f57ad8f6b',
+        'reference' => '640e4b19f7d5d9dc005848da2f3b3a3bb6131e44',
         'name' => 'drupal/recommended-project',
         'dev' => true,
     ),
@@ -359,12 +359,12 @@
             'dev_requirement' => false,
         ),
         'drupal/entity_reference_revisions' => array(
-            'pretty_version' => '1.9.0',
-            'version' => '1.9.0.0',
+            'pretty_version' => '1.10.0',
+            'version' => '1.10.0.0',
             'type' => 'drupal-module',
             'install_path' => __DIR__ . '/../../web/modules/contrib/entity_reference_revisions',
             'aliases' => array(),
-            'reference' => '8.x-1.9',
+            'reference' => '8.x-1.10',
             'dev_requirement' => false,
         ),
         'drupal/google_tag' => array(
@@ -418,7 +418,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '7ecd8f7835c1f8f809e027e7ce5d5d2f57ad8f6b',
+            'reference' => '640e4b19f7d5d9dc005848da2f3b3a3bb6131e44',
             'dev_requirement' => false,
         ),
         'drupal/redirect' => array(
