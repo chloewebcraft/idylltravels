@@ -2,17 +2,17 @@
 
 namespace Drupal\httpswww\EventSubscriber;
 
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Routing\TrustedRedirectResponse;
 use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Class HttpsWwwRedirectSubscriber.
+ * The Class HttpsWwwRedirectSubscriber.
  *
  * @package Drupal\httpswww\EventSubscriber
  */
@@ -37,7 +37,7 @@ class HttpsWwwRedirectSubscriber implements EventSubscriberInterface {
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The config.
-   * @param \Drupal\Core\Session\AccountInterface      $account
+   * @param \Drupal\Core\Session\AccountInterface $account
    *   The current user.
    */
   public function __construct(ConfigFactoryInterface $config_factory, AccountInterface $account) {
@@ -48,10 +48,10 @@ class HttpsWwwRedirectSubscriber implements EventSubscriberInterface {
   /**
    * Executes a redirect if one is needed based on config.
    *
-   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+   * @param \Symfony\Component\HttpKernel\Event\RequestEvent $event
    *   The event to process.
    */
-  public function redirect(GetResponseEvent $event) {
+  public function redirect(RequestEvent $event) {
 
     // Quit if it's not enabled.
     if (empty($this->config->get('enabled'))) {
@@ -63,30 +63,37 @@ class HttpsWwwRedirectSubscriber implements EventSubscriberInterface {
       return;
     }
 
-    $host = $event->getRequest()->getHost();
-    $scheme = $event->getRequest()->getScheme();
+    $req_host = $event->getRequest()->getHost();
+    $req_scheme = $event->getRequest()->getScheme();
+    $req_url = $event->getRequest()->getSchemeAndHttpHost();
 
     $conf_scheme = $this->config->get('scheme') ?: 'mixed';
-    $use_prefix = $this->config->get('prefix') == 'yes';
-
-    $curr_url = $event->getRequest()->getSchemeAndHttpHost();
+    $conf_prefix = $this->config->get('prefix') ?: 'mixed';
+    $use_prefix = $conf_prefix === 'yes';
 
     // Set scheme.
-    $new_url = ($conf_scheme === 'mixed' ? $scheme : $conf_scheme) . '://';
+    $new_scheme = $conf_scheme === 'mixed' ? $req_scheme : $conf_scheme;
+    $new_host = $req_host;
 
-    // Set/remove prefix and add host.
-    if ($use_prefix && substr($host, 0, 4) !== 'www.') {
-      $new_url .= 'www.' . $host;
+    // Set/remove prefix.
+    if ($conf_prefix !== 'mixed') {
+      $domain_parts = explode('.', $req_host);
+      $prefix = reset($domain_parts);
+      $has_www = $prefix === 'www';
+      $excl_subs = $this->config->get('exclude_subdomains') ?: [];
+
+      if ($use_prefix && !$has_www && !in_array($prefix, $excl_subs)) {
+        $new_host = 'www.' . $req_host;
+      }
+      elseif (!$use_prefix && $has_www) {
+        $new_host = substr($req_host, 4);
+      }
     }
-    elseif (!$use_prefix && substr($host, 0, 4) === 'www.') {
-      $new_url .= substr($host, 4);
-    }
-    else {
-      $new_url .= $host;
-    }
+
+    $new_url = $new_scheme . '://' . $new_host;
 
     // Check if the URL is valid and redirect if URLs doesn't match.
-    if (UrlHelper::isValid($new_url, TRUE) && $curr_url !== $new_url) {
+    if (UrlHelper::isValid($new_url, TRUE) && $req_url !== $new_url) {
       $new_url .= $event->getRequest()->getRequestUri();
       $response = new TrustedRedirectResponse($new_url, 301);
 
